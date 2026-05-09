@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page { size: A4 portrait; margin: 20mm; }
+    body { font-family: 'Times New Roman', serif; font-size: 11pt; }
+    h2 { text-align: center; font-size: 13pt; margin-bottom: 4px; }
+    .subtitle { text-align: center; margin-bottom: 16px; font-size: 10pt; }
+    .field { margin-bottom: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #000; padding: 4px 6px; font-size: 10pt; }
+    th { background: #f0f0f0; text-align: center; }
+    .commission { margin-top: 16px; }
+    .sign-row { margin-top: 12px; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <h2>ПРОТОКОЛ №{{protocolNumber}}</h2>
+  <h2>ЗАСЕДАНИЯ КОМИССИИ ПО ПРОВЕРКЕ ЗНАНИЙ ТРЕБОВАНИЙ ОХРАНЫ ТРУДА</h2>
+
+  <div class="field">
+    <strong>Дата:</strong> {{date}}&nbsp;&nbsp;&nbsp;
+    <strong>Организация:</strong> {{orgName}}
+  </div>
+
+  <div class="commission">
+    <p><strong>Состав комиссии:</strong></p>
+    {{#each commissionMembers}}
+    <p>
+      {{#if (eq role "chairman")}}Председатель:{{else}}Член комиссии:{{/if}}
+      {{name}}, {{position}}
+    </p>
+    {{/each}}
+  </div>
+
+  <p><strong>Результаты проверки знаний:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>ФИО</th>
+        <th>Должность</th>
+        <th>Подразделение</th>
+        <th>Оценка</th>
+        <th style="width:80px">Подпись</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each examinees}}
+      <tr>
+        <td>{{rowIndex}}</td>
+        <td>{{name}}</td>
+        <td>{{position}}</td>
+        <td>{{dept}}</td>
+        <td>{{grade}}</td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div style="margin-top: 24px;">
+    <p><strong>Подписи членов комиссии:</strong></p>
+    {{#each commissionMembers}}
+    <p>
+      {{name}} _________________________
+    </p>
+    {{/each}}
+  </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page { size: A4 portrait; margin: 25mm 20mm; }
+    body { font-family: 'Times New Roman', serif; font-size: 12pt; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .header .org-name { font-size: 14pt; font-weight: bold; text-transform: uppercase; }
+    .header .order-title { font-size: 16pt; font-weight: bold; margin: 12px 0 4px; }
+    .header .order-meta { font-size: 11pt; }
+    .body { text-align: justify; margin: 20px 0; line-height: 1.6; }
+    .footer { margin-top: 40px; }
+    .sign-line { display: flex; justify-content: space-between; margin-top: 16px; }
+    .basis { margin: 12px 0; font-size: 11pt; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    {{#if logoUrl}}
+    <img src="{{logoUrl}}" height="60" alt="Логотип"><br>
+    {{/if}}
+    <div class="org-name">{{orgName}}</div>
+    <div class="order-title">ПРИКАЗ</div>
+    <div class="order-meta">
+      №&nbsp;{{orderNumber}}&nbsp;&nbsp;&nbsp;от&nbsp;{{orderDate}}
+    </div>
+  </div>
+
+  <div class="basis">
+    <strong>Основание:</strong> {{basis}}
+  </div>
+
+  <div class="body">
+    {{{content}}}
+  </div>
+
+  <div class="footer">
+    <div class="sign-line">
+      <span>{{directorPosition}}</span>
+      <span>________________</span>
+      <span>{{directorName}}</span>
+    </div>
+    <div style="margin-top: 20px; font-size: 10pt; text-align: right;">
+      Дата подписания: {{signDate}}
+    </div>
+  </div>
+</body>
+</html>

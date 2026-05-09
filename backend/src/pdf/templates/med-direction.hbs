@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page { size: A4 portrait; margin: 20mm; }
+    body { font-family: 'Times New Roman', serif; font-size: 11pt; }
+    h2 { text-align: center; margin-bottom: 4px; font-size: 13pt; }
+    .subtitle { text-align: center; font-size: 10pt; margin-bottom: 16px; }
+    .field { margin-bottom: 8px; }
+    .field label { font-weight: bold; }
+    .field-line { border-bottom: 1px solid #000; min-width: 200px; display: inline-block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #000; padding: 4px 6px; font-size: 10pt; }
+    th { background: #f0f0f0; text-align: center; }
+    .sign-block { margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <h2>НАПРАВЛЕНИЕ НА МЕДИЦИНСКИЙ ОСМОТР</h2>
+  <div class="subtitle">
+    (предварительный / периодический — нужное подчеркнуть)
+  </div>
+
+  <div class="field">
+    <label>Наименование работодателя:</label>
+    <span class="field-line"> {{orgName}} </span>
+  </div>
+  <div class="field">
+    <label>ИНН работодателя:</label>
+    <span class="field-line"> {{inn}} </span>
+  </div>
+  <div class="field">
+    <label>Вид деятельности (ОКВЭД):</label>
+    <span class="field-line"> {{okved}} </span>
+  </div>
+  <div class="field">
+    <label>Наименование медицинской организации:</label>
+    <span class="field-line"> {{medicalOrg}} </span>
+  </div>
+  <div class="field">
+    <label>Вид медицинского осмотра:</label>
+    <span class="field-line"> {{examType}} </span>
+  </div>
+
+  <hr>
+
+  <div class="field">
+    <label>ФИО работника:</label>
+    <span class="field-line"> {{employeeName}} </span>
+  </div>
+  <div class="field">
+    <label>Дата рождения:</label>
+    <span class="field-line"> {{birthDate}} </span>
+    &nbsp;&nbsp;
+    <label>Пол:</label>
+    <span class="field-line"> {{gender}} </span>
+  </div>
+  <div class="field">
+    <label>Структурное подразделение:</label>
+    <span class="field-line"> {{deptName}} </span>
+  </div>
+  <div class="field">
+    <label>Наименование должности:</label>
+    <span class="field-line"> {{position}} </span>
+  </div>
+
+  <p><strong>Вредные и (или) опасные производственные факторы и виды работ:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Наименование фактора / вида работы</th>
+        <th>Пункт Приложений к Приказу №29н</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each harmfulFactors}}
+      <tr>
+        <td>{{@index_plus_1}}</td>
+        <td>{{this}}</td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="sign-block">
+    <p>Дата выдачи: {{createdAt}}</p>
+    <p>Руководитель организации / уполномоченное лицо:</p>
+    <p>____________________________ / {{directorName}} / {{directorPosition}}</p>
+    <p>М.П.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page { size: A4 landscape; margin: 15mm; }
+    body { font-family: 'Times New Roman', serif; font-size: 9pt; }
+    h2 { text-align: center; font-size: 12pt; margin-bottom: 4px; }
+    .subtitle { text-align: center; font-size: 10pt; margin-bottom: 8px; }
+    .org-info { margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+    th, td { border: 1px solid #000; padding: 3px 4px; text-align: center; vertical-align: middle; }
+    th { background: #f0f0f0; font-weight: bold; }
+    .no-col { width: 30px; }
+    .sign-col { width: 60px; min-height: 25px; }
+    .footer { margin-top: 16px; font-size: 9pt; }
+  </style>
+</head>
+<body>
+  <div class="org-info">
+    <strong>Организация:</strong> {{orgName}}<br>
+    <strong>ИНН:</strong> {{inn}}
+  </div>
+
+  <h2>ЖУРНАЛ РЕГИСТРАЦИИ ВВОДНОГО ИНСТРУКТАЖА ПО ОХРАНЕ ТРУДА</h2>
+  <div class="subtitle">
+    Приложение №1 к Правилам обучения по охране труда (Постановление Минтруда РФ №2464 от 24.12.2021)
+  </div>
+  <div class="subtitle">
+    Период: с {{periodStart}} по {{periodEnd}}
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="no-col">№</th>
+        <th>Дата</th>
+        <th>ФИО инструктируемого</th>
+        <th>Год рождения</th>
+        <th>Профессия / должность</th>
+        <th>Наименование подразделения</th>
+        <th>ФИО инструктора</th>
+        <th>Должность инструктора</th>
+        <th class="sign-col">Подпись инструктируемого</th>
+        <th class="sign-col">Подпись инструктора</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each records}}
+      <tr>
+        <td>{{rowIndex}}</td>
+        <td>{{conductedAt}}</td>
+        <td>{{employeeName}}</td>
+        <td>{{birthYear}}</td>
+        <td>{{position}}</td>
+        <td>{{department}}</td>
+        <td>{{instructorName}}</td>
+        <td>{{instructorPosition}}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <p>Специалист по охране труда: ___________________________ / {{otSpecialist}} /</p>
+  </div>
+</body>
+</html>
